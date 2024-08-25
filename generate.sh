@@ -4,7 +4,7 @@ set -eu
 
 CN="${CN:-kafka-admin}"
 PASSWORD="${PASSWORD:-supersecret}"
-TO_GENERATE_PEM="${CITY:-yes}"
+TO_GENERATE_PEM="${CITY:-no}"
 
 VALIDITY_IN_DAYS=3650
 CA_WORKING_DIRECTORY="certificate-authority"

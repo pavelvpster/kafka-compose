@@ -20,7 +20,7 @@ services:
       - KAFKA_CFG_SUPER_USERS=User:sa
       # LISTENERS
       - KAFKA_CFG_LISTENERS=INTERNAL://:9091,EXTERNAL://:29092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://192.168.0.188:29092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://localhost:29092
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:SASL_SSL,EXTERNAL:SASL_SSL,CONTROLLER:SASL_SSL
       # BROKER SETTINGS
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
@@ -34,8 +34,8 @@ services:
       - KAFKA_CONTROLLER_PASSWORD=000000
       # CLIENT SETTINGS
       - KAFKA_CLIENT_LISTENER_NAME=EXTERNAL
-      - KAFKA_CLIENT_USERS=sa,da,va
-      - KAFKA_CLIENT_PASSWORDS=000000,111111,222222
+      - KAFKA_CLIENT_USERS=sa,da
+      - KAFKA_CLIENT_PASSWORDS=000000,111111
       # ACL
       - KAFKA_CFG_AUTHORIZER_CLASS_NAME=org.apache.kafka.metadata.authorizer.StandardAuthorizer
       - KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND=false
@@ -53,6 +53,8 @@ services:
       - ./jmx-exporter:/opt/jmx-exporter
       - ./keystore/kafka-0.server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro
       - ./truststore/kafka.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro
+      - ./admin.properties:/opt/bitnami/kafka/admin.properties:ro
+      - ./client.properties.da:/opt/bitnami/kafka/client.properties.da:ro
     healthcheck:
       test: "bash -c 'printf \"\" > /dev/tcp/127.0.0.1/9091; exit $$?;'"
       interval: 5s
@@ -79,7 +81,7 @@ services:
       - KAFKA_CFG_SUPER_USERS=User:sa
       # LISTENERS
       - KAFKA_CFG_LISTENERS=INTERNAL://:9091,EXTERNAL://:29093,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://192.168.0.188:29093   
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://localhost:29093   
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:SASL_SSL,EXTERNAL:SASL_SSL,CONTROLLER:SASL_SSL
       # BROKER SETTINGS
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
@@ -93,8 +95,8 @@ services:
       - KAFKA_CONTROLLER_PASSWORD=000000
       # CLIENT SETTINGS
       - KAFKA_CLIENT_LISTENER_NAME=EXTERNAL
-      - KAFKA_CLIENT_USERS=sa,da,va
-      - KAFKA_CLIENT_PASSWORDS=000000,111111,222222
+      - KAFKA_CLIENT_USERS=sa,da
+      - KAFKA_CLIENT_PASSWORDS=000000,111111
       # ACL
       - KAFKA_CFG_AUTHORIZER_CLASS_NAME=org.apache.kafka.metadata.authorizer.StandardAuthorizer
       - KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND=false
@@ -112,6 +114,8 @@ services:
       - ./jmx-exporter:/opt/jmx-exporter
       - ./keystore/kafka-1.server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro
       - ./truststore/kafka.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro
+      - ./admin.properties:/opt/bitnami/kafka/admin.properties:ro
+      - ./client.properties.da:/opt/bitnami/kafka/client.properties.da:ro
     healthcheck:
       test: "bash -c 'printf \"\" > /dev/tcp/127.0.0.1/9091; exit $$?;'"
       interval: 5s
@@ -138,7 +142,7 @@ services:
       - KAFKA_CFG_SUPER_USERS=User:sa
       # LISTENERS
       - KAFKA_CFG_LISTENERS=INTERNAL://:9091,EXTERNAL://:29094,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://192.168.0.188:29094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://:9091,EXTERNAL://localhost:29094
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:SASL_SSL,EXTERNAL:SASL_SSL,CONTROLLER:SASL_SSL
       # BROKER SETTINGS
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
@@ -152,8 +156,8 @@ services:
       - KAFKA_CONTROLLER_PASSWORD=000000
       # CLIENT SETTINGS
       - KAFKA_CLIENT_LISTENER_NAME=EXTERNAL
-      - KAFKA_CLIENT_USERS=sa,da,va
-      - KAFKA_CLIENT_PASSWORDS=000000,111111,222222
+      - KAFKA_CLIENT_USERS=sa,da
+      - KAFKA_CLIENT_PASSWORDS=000000,111111
       # ACL
       - KAFKA_CFG_AUTHORIZER_CLASS_NAME=org.apache.kafka.metadata.authorizer.StandardAuthorizer
       - KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND=false
@@ -171,6 +175,8 @@ services:
       - ./jmx-exporter:/opt/jmx-exporter
       - ./keystore/kafka-2.server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro
       - ./truststore/kafka.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro
+      - ./admin.properties:/opt/bitnami/kafka/admin.properties:ro
+      - ./client.properties.da:/opt/bitnami/kafka/client.properties.da:ro
     healthcheck:
       test: "bash -c 'printf \"\" > /dev/tcp/127.0.0.1/9091; exit $$?;'"
       interval: 5s
